@@ -1,17 +1,27 @@
 <script>
-  export let data;
+  import favoriteArticlesStore from "$lib/stores/favoriteArticlesStore.svelte.js";
 
+  const { data } = $props();
   const { id, title, body } = data.article;
+  const { addToFavorite, removeFromFavorite } = favoriteArticlesStore;
 
-  let isSaved = false;
+  let isSaved = $derived(favoriteArticlesStore.articles.some((article) => article.id === id));
+
+  function handleFavorite() {
+    if (isSaved) {
+      removeFromFavorite(id);
+    } else {
+      addToFavorite(id, title);
+    }
+  }
 </script>
 
-<div class="article-page">
+<div>
   <a class="favorite-link" href="/favoris">mes favoris</a>
   <div class="article-content">
     <div class="article-head">
       <div class="article-section"><span>id:</span>{id}</div>
-      <button class="save-article-button">
+      <button onclick={handleFavorite}>
         {#if isSaved}
           <img src="/src/assets/heart-filled.svg" width="40" alt="article is saved" />
         {:else}
@@ -19,34 +29,23 @@
         {/if}
       </button>
     </div>
-    <div class="article-section title">{title}</div>
+    <h1 class="article-section title">{title}</h1>
     <div class="delimiter" />
     <div class="article-section body">{body}{body}{body}{body}</div>
   </div>
 </div>
 
 <style lang="scss">
-  .article-page {
-    width: 100%;
-    height: 100vh;
+  .article-content {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    gap: 16px;
   }
 
   .article-head {
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
-
-  .article-content {
-    font-size: 20px;
-    max-width: 500px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 50px 32px 32px 32px;
   }
 
   .article-section {
@@ -64,13 +63,6 @@
     width: 30%;
     margin: 6px 0;
     background-color: whitesmoke;
-  }
-
-  .save-article-button {
-    background-color: transparent;
-    border: none;
-    padding: 0;
-    cursor: pointer;
   }
 
   .favorite-link {
