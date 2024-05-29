@@ -1,5 +1,4 @@
 <script>
-  import { onMount } from "svelte";
   import favoriteArticlesStore from "$lib/stores/favoriteArticlesStore.svelte.js";
 
   const { id } = $props();
@@ -8,7 +7,7 @@
 
   const { getFavoriteArticleById, removeFromFavorite } = favoriteArticlesStore;
 
-  onMount(() => {
+  $effect(() => {
     article = getFavoriteArticleById(id);
   });
 </script>

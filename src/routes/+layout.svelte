@@ -1,8 +1,7 @@
 <script>
-  import { onMount } from "svelte";
   import favoriteArticlesStore from "$lib/stores/favoriteArticlesStore.svelte.js";
 
-  onMount(() => {
+  $effect(() => {
     favoriteArticlesStore.init();
   });
 </script>
