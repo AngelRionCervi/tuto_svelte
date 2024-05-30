@@ -2,10 +2,9 @@
   import favoriteArticlesStore from "$lib/stores/favoriteArticlesStore.svelte.js";
 
   const { id } = $props();
+  const { getFavoriteArticleById, removeFromFavorite } = favoriteArticlesStore;
 
   let article = $state(null);
-
-  const { getFavoriteArticleById, removeFromFavorite } = favoriteArticlesStore;
 
   $effect(() => {
     article = getFavoriteArticleById(id);
@@ -16,7 +15,7 @@
   {#if article}
     <div class="infos">
       <span>{article.id}</span>
-      <span>{article.title}</span>
+      <a href="/article/{id}">{article.title}</a>
     </div>
     <button onclick={() => removeFromFavorite(id)}>
       <img src="/src/assets/remove.svg" width="40" alt="supprimer le favori" />

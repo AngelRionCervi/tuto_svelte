@@ -29,9 +29,9 @@
         {/if}
       </button>
     </div>
-    <h1 class="article-section title">{title}</h1>
+    <h1 class="article-section">{title}</h1>
     <div class="delimiter" />
-    <div class="article-section body">{body}{body}{body}{body}</div>
+    <div class="article-section">{body}{body}{body}{body}</div>
   </div>
 </div>
 
@@ -51,11 +51,6 @@
   .article-section {
     display: flex;
     gap: 8px;
-
-    &.title {
-      font-size: 36px;
-      font-weight: bold;
-    }
   }
 
   .delimiter {
