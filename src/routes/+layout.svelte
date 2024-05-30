@@ -3,7 +3,7 @@
 </script>
 
 <div class="layout">
-  <div class="content">content...</div>
+  <div class="content">¯\_(ツ)_/¯</div>
 </div>
 
 <style>
