@@ -1,27 +1,15 @@
 <script>
   import favoriteArticlesStore from "$lib/stores/favoriteArticlesStore.svelte.js";
 
-  const { data } = $props();
-  const { id, title, body } = data.article;
-  const { addToFavorite, removeFromFavorite } = favoriteArticlesStore;
-
-  let isSaved = $derived(favoriteArticlesStore.articles.some((article) => article.id === id));
-
-  function handleFavorite() {
-    if (isSaved) {
-      removeFromFavorite(id);
-    } else {
-      addToFavorite(id, title);
-    }
-  }
+  let isSaved = false;
 </script>
 
 <div>
   <a class="favorite-link" href="/favoris">mes favoris</a>
   <div class="article-content">
     <div class="article-head">
-      <div class="article-section"><span>id:</span>{id}</div>
-      <button onclick={handleFavorite}>
+      <div class="article-section"><span>id: id</span></div>
+      <button>
         {#if isSaved}
           <img src="/src/assets/heart-filled.svg" width="40" alt="article is saved" />
         {:else}
@@ -29,9 +17,9 @@
         {/if}
       </button>
     </div>
-    <h1 class="article-section">{title}</h1>
-    <div class="delimiter" />
-    <div class="article-section">{body}{body}{body}{body}</div>
+    <h1 class="article-section">title</h1>
+    <div class="delimiter"></div>
+    <div class="article-section">body</div>
   </div>
 </div>
 

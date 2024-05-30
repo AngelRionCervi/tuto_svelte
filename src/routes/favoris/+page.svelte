@@ -6,13 +6,7 @@
 <div>
   <h1>Mes articles favoris:</h1>
   <div class="favorite-container">
-    {#if !favoriteArticlesStore.articles?.length}
-      <span>Aucun article dans les favoris !</span>
-    {:else}
-      {#each favoriteArticlesStore.articles as article}
-        <FavoriteArticleEntry id={article.id} />
-      {/each}
-    {/if}
+   
   </div>
 </div>
 
