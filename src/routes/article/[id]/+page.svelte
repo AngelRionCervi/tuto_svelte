@@ -30,7 +30,7 @@
       </button>
     </div>
     <h1 class="article-section">{title}</h1>
-    <div class="delimiter" />
+    <div class="delimiter"></div>
     <div class="article-section">{body}{body}{body}{body}</div>
   </div>
 </div>

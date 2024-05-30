@@ -1,13 +1,15 @@
 <script>
   import favoriteArticlesStore from "$lib/stores/favoriteArticlesStore.svelte.js";
 
+  const { children } = $props();
+
   $effect(() => {
     favoriteArticlesStore.init();
   });
 </script>
 
 <div class="layout">
-  <div class="content"><slot /></div>
+  <div class="content">{@render children()}</div>
 </div>
 
 <style>
